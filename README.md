@@ -1,17 +1,6 @@
-# KBC cloud native training: practical case
+# Cloud native training: practical case
 
 This is a workshop that combines some cloud native theoretical and practical modules. It is focused on a Spring Boot application.
-
-Many thanks to [Nick De Cock](https://github.com/nickdkcronos) who provided the first version of this workshop in 2019. [Patrick Hancke](https://github.com/patrickhancke) reviewed and updated it in 2022 to be in line with the most recent Spring Boot version.
-
-## Prerequisites
-
-Following tools should already be available / installed
-
-* GitHub account
-* Java 11
-* Postman
-* IntelliJ
 
 ## Business Case
 
@@ -25,19 +14,3 @@ They want to aim at a [minimum viable product](https://en.wikipedia.org/wiki/Min
 * https://www.themealdb.com/api.php
 
 They plan to combine these two APIs in one of their own. They have a brand new Cloud-Native platform, based on OpenShift that they want to leverage.
-
-## GitHub
-
-Create a free private [github account](https://github.com/) and setup [connection over SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh). [Fork this repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo) to start implementing the practical case. Add the instructor as a [collaborator](https://docs.github.com/en/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization) on your fork.
-
-## Labs
-
-Refer to detailed instructions in each subfolder.
-
-Try to get as far as possible, lab 5 can be considered as the minimal target.
-
-## Tips
-
-Use git to your advantage: branch, make frequent commits, push to github etc..
-
-Refer to the Spring Core course for any practical details regarding Spring.
