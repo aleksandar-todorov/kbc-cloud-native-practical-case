@@ -1,0 +1,3 @@
+feign:
+  httpclient:
+    disable-ssl-validation: true

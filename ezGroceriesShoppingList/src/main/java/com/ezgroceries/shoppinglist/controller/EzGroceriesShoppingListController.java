@@ -1,15 +1,19 @@
 package com.ezgroceries.shoppinglist.controller;
 
+import com.ezgroceries.shoppinglist.client.CocktailDBClient;
+import com.ezgroceries.shoppinglist.model.CocktailDBResponse;
 import com.ezgroceries.shoppinglist.model.CocktailInput;
 import com.ezgroceries.shoppinglist.model.CocktailOutput;
 import com.ezgroceries.shoppinglist.model.ShoppingListInput;
 import com.ezgroceries.shoppinglist.model.ShoppingListOutput;
 import java.net.URI;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,10 +31,17 @@ public class EzGroceriesShoppingListController {
 
     private static final Logger log = LoggerFactory.getLogger(EzGroceriesShoppingListController.class);
 
+    private final CocktailDBClient cocktailDBClient;
+
+    public EzGroceriesShoppingListController(CocktailDBClient cocktailDBClient) {
+        this.cocktailDBClient = cocktailDBClient;
+    }
+
     @GetMapping("/cocktails")
     public ResponseEntity<List<CocktailOutput>> getCocktails(@RequestParam String search) {
         log.info("Getting list of all cocktails containing : {}", search);
-        return ResponseEntity.ok(getMockCocktailsList());
+        CocktailDBResponse cocktailDBResponse = cocktailDBClient.searchCocktails(search);
+        return ResponseEntity.ok(mapToCocktailOutput(cocktailDBResponse));
     }
 
     @PostMapping("/shopping-lists")
@@ -99,5 +110,20 @@ public class EzGroceriesShoppingListController {
                         "6c7d09c2-8a25-4d54-a979-25ae779d2465",
                         "My Birthday",
                         List.of("Tequila", "Triple sec", "Lime juice", "Salt", "Blue Curacao")));
+    }
+
+    private List<CocktailOutput> mapToCocktailOutput(CocktailDBResponse cocktailDBResponse) {
+        return cocktailDBResponse.getDrinks().stream()
+                .map(drinkResource -> new CocktailOutput(
+                        drinkResource.getIdDrink(),
+                        drinkResource.getStrDrink(),
+                        drinkResource.getStrGlass(),
+                        drinkResource.getStrInstructions(),
+                        drinkResource.getStrDrinkThumb(),
+                        Stream.of(drinkResource.getStrIngredient1(), drinkResource.getStrIngredient2(), drinkResource.getStrIngredient3(),
+                                        drinkResource.getStrIngredient4())
+                                .filter(Objects::nonNull)
+                                .collect(Collectors.toList())))
+                .collect(Collectors.toList());
     }
 }
