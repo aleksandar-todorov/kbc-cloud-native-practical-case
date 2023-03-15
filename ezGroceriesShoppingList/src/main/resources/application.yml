@@ -1,3 +1,25 @@
 feign:
   httpclient:
     disable-ssl-validation: true
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: mysecretpassword
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: 'true'
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    locations: "classpath:db/migration"
+
+management:
+  endpoint:
+    health:
+      show-details: always
