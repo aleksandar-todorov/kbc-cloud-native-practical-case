@@ -28,6 +28,15 @@ public class CocktailEntity {
     private String name;
 
     @Column
+    private String glass;
+
+    @Column
+    private String instructions;
+
+    @Column
+    private String imageLink;
+
+    @Column
     @Convert(converter = StringSetConverter.class)
     private Set<String> ingredients;
 
@@ -59,6 +68,30 @@ public class CocktailEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getGlass() {
+        return glass;
+    }
+
+    public void setGlass(String glass) {
+        this.glass = glass;
+    }
+
+    public String getInstructions() {
+        return instructions;
+    }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
+    }
+
+    public String getImageLink() {
+        return imageLink;
+    }
+
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
     }
 
     public Set<String> getIngredients() {

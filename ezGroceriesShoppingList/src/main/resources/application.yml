@@ -1,6 +1,15 @@
 feign:
   httpclient:
     disable-ssl-validation: true
+  hystrix:
+    eneabled: true
+  client:
+    config:
+      default:
+        logger-level: basic
+        read-timeout: 3000
+        connect-timeout: 3000
+
 
 spring:
   datasource:
@@ -37,3 +46,9 @@ server:
   port: 8443
   http:
     port: 8080
+
+logging:
+  level:
+    com:
+      ezgroceries:
+        shoppinglist: DEBUG
