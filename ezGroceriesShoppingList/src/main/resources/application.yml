@@ -23,3 +23,17 @@ management:
   endpoint:
     health:
       show-details: always
+
+# TLS settings
+server:
+  ssl:
+    enabled: true
+    key-store-password: hunter2
+    key-store: classpath:keystore/local-keystore.jks
+    key-alias: localhost
+    trust-store: classpath:keystore/local-truststore.jks
+    trust-store-password: hunter2
+    client-auth: need
+  port: 8443
+  http:
+    port: 8080
