@@ -1,6 +1,6 @@
 package com.ezgroceries.shoppinglist.model;
 
-import java.util.List;
+import java.util.Set;
 
 /**
  * @author Aleksandar Todorov (jf08663)
@@ -9,12 +9,12 @@ public class ShoppingListOutput {
 
     private String shoppingListId;
     private String name;
-    private List<String> ingredients;
+    private Set<String> ingredients;
 
     public ShoppingListOutput() {
     }
 
-    public ShoppingListOutput(String shoppingListId, String name, List<String> ingredients) {
+    public ShoppingListOutput(String shoppingListId, String name, Set<String> ingredients) {
         this.shoppingListId = shoppingListId;
         this.name = name;
         this.ingredients = ingredients;
@@ -36,11 +36,11 @@ public class ShoppingListOutput {
         this.name = name;
     }
 
-    public List<String> getIngredients() {
+    public Set<String> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<String> ingredients) {
+    public void setIngredients(Set<String> ingredients) {
         this.ingredients = ingredients;
     }
 }

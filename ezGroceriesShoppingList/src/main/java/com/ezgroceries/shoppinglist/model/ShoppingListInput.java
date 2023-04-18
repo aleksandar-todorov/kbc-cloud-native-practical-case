@@ -7,6 +7,13 @@ public class ShoppingListInput {
 
     private String name;
 
+    public ShoppingListInput() {
+    }
+
+    public ShoppingListInput(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }

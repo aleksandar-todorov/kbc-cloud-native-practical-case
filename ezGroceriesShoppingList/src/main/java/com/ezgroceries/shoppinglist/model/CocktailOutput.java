@@ -1,6 +1,6 @@
 package com.ezgroceries.shoppinglist.model;
 
-import java.util.List;
+import java.util.Set;
 
 /**
  * @author Aleksandar Todorov (jf08663)
@@ -12,12 +12,12 @@ public class CocktailOutput {
     private String glass;
     private String instructions;
     private String image;
-    private List<String> ingredients;
+    private Set<String> ingredients;
 
     public CocktailOutput() {
     }
 
-    public CocktailOutput(String cocktailId, String name, String glass, String instructions, String image, List<String> ingredients) {
+    public CocktailOutput(String cocktailId, String name, String glass, String instructions, String image, Set<String> ingredients) {
         this.cocktailId = cocktailId;
         this.name = name;
         this.glass = glass;
@@ -66,11 +66,11 @@ public class CocktailOutput {
         this.image = image;
     }
 
-    public List<String> getIngredients() {
+    public Set<String> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<String> ingredients) {
+    public void setIngredients(Set<String> ingredients) {
         this.ingredients = ingredients;
     }
 }
